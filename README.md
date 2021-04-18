@@ -34,9 +34,7 @@ run;
 proc mcmc data=obesity NBI=10000 nmc=5000000 THIN=5 seed=7465 stats=all diagnostics=all;
 parms b0-b12;
 prior b: ~ normal (0, var=10000);
-mu=b0 + b1*race_ + b2*alcohol_0 + b3*FEELINGSCALE_0 + b4*TVHRS_0 + b5*ACTIVITYSCALE_0 + b6*ALCOHOL_1
-   + b7*FEELINGSCALE_1 + b8*TVHRS_1 + b9*ACTIVITYSCALE_1 + b10*ALCOHOL_2 + b11*ACTIVITYSCALE_2 
-   + b12*ACTIVITYSCALE_3;
+mu=b0+b1*race_+b2*alcohol_0+b3*FEELINGSCALE_0+b4*TVHRS_0+b5*ACTIVITYSCALE_0+b6*ALCOHOL_1+b7*FEELINGSCALE_1+b8*TVHRS_1+b9*ACTIVITYSCALE_1+b10*ALCOHOL_2+b11*ACTIVITYSCALE_2+b12*ACTIVITYSCALE_3;
 MU1=EXP(MU)/(1+EXP(MU));
 model bmi~binomial(1, p=MU1);
 run;
